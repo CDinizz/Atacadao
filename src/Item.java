@@ -1,9 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-public class Item extends CaixaDoAtacado{
+public class Item {
     private int id;
     private String nome;
     private double valor;
@@ -39,26 +34,40 @@ public class Item extends CaixaDoAtacado{
         this.valor = valor;
     }
 
-    public double calcularDesconto(int quantidade, String metodoPagamento) {
+    public double calcularDescontoQuantidade(int quantidade) {
         double valorTotal = valor * quantidade;
-        double descontoOuAcrescimo = 0.0;
 
-        // Aplicar desconto/acréscimo com base na quantidade
+        // Aplicar desconto com base na quantidade
         if (quantidade > 5 && quantidade <= 15) {
-            descontoOuAcrescimo -= valorTotal * 0.10; // 10% de desconto
+            valorTotal -= valorTotal * 0.10; // 10% de desconto
         } else if (quantidade > 15 && quantidade <= 25) {
-            descontoOuAcrescimo -= valorTotal * 0.20; // 20% de desconto
+            valorTotal -= valorTotal * 0.20; // 20% de desconto
         } else if (quantidade > 25) {
-            descontoOuAcrescimo -= valorTotal * 0.25; // 25% de desconto
+            valorTotal -= valorTotal * 0.25; // 25% de desconto
         }
         return valorTotal;
     }
 
-    public double getPreco() {
 
-        return 0;
+    public double calcularDescontoPagamento(String metodoPagamento) {
+        double valorDescPag = 0;
+
+        if (metodoPagamento.equals("dinheiro")) {
+            valorDescPag -= 0.05;
+        } else if (metodoPagamento.equals("credito")) {
+            valorDescPag += 0.03;
+
+        }
+        return valorDescPag;
     }
 
 
+
 }
+
+
+
+
+
+
 
