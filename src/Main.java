@@ -1,18 +1,6 @@
-
-
 public class Main {
-
     public static void main(String[] args) {
-        CaixaDoAtacado.computarCompra();
-
+        CaixaDoAtacado caixa = new CaixaDoAtacado();
+        caixa.computarCompra();
     }
 }
-
-
-
-
-
-
-
-
-
